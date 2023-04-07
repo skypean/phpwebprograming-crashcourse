@@ -1,8 +1,6 @@
 <?php 
 
-include_once('../incs/menu.php');
-
-/* 
+/*
     YOUR CODE GOES HERE
 */
 ?>
@@ -40,10 +38,10 @@ include_once('../incs/menu.php');
                             <td>
                                 <div class="container-user-action">
                                     <div class="container-update">
-                                        <a href="/users/update?id=<?= $user->id ?>" class="btn-secondary">Update</a>
+                                        <a href="/users/update.php?id=<?= $user->id ?>" class="btn-secondary">Update</a>
                                     </div>
                                     <div class="container-delete">
-                                        <form action="/users/delete" method="post">
+                                        <form action="/users/delete.php" method="post">
                                             <button type="submit" name="id" value="<?= $user->id ?>"
                                                     class="btn-danger"
                                                     onclick='return confirm("Delete this user?")'>

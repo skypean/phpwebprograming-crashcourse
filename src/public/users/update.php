@@ -1,8 +1,14 @@
-<?php include_once('../incs/menu.php'); ?>
+<?php 
+
+/*
+    YOUR CODE GOES HERE
+*/
+
+?>
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Update Admin</h1>
+        <h1>Update User</h1>
         <br />
         <br />
 
@@ -11,13 +17,13 @@
                 <tr>
                     <td>Full Name: </td>
                     <td>
-                        <input type="text" name="full_name" value="<?= $user['full_name'] ?? '' ?>">
+                        <input type="text" name="full_name" value="<?= $user->fullname ?? '' ?>">
                     </td>
                 </tr>
 
                 <tr>
                     <td colspan="2">
-                        <input type="hidden" name="id" value="<?= $user['id'] ?? '' ?>">
+                        <input type="hidden" name="id" value="<?= $user->id ?? '' ?>">
                         <input type="submit" name="submit" value="Update" class="btn-secondary">
                     </td>
                 </tr>
