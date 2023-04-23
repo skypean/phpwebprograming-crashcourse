@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    user: '1000:1000'
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: programwithsas-app
+    restart: always
+    working_dir: /var/www/
+    volumes:
+      - ../src:/var/www:rw
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: programwithsas-nginx
+    restart: always
+    ports:
+      - 9000:80
+    volumes:
+      - ../src:/var/www
+      - ./nginx:/etc/nginx/conf.d
+  db:
+    container_name: programwithsas-db
+    image: mysql:8.0
+    volumes:
+      - ./storage/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - 3307:3306

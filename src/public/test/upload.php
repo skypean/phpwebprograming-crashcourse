@@ -15,21 +15,24 @@ define('STORAGE_PATH', __DIR__ . '/../../storage');
 if (!is_dir(STORAGE_PATH)) {
     # default umask is 022
     umask(0);
-    mkdir(STORAGE_PATH, 0764, true);
-    chgrp(STORAGE_PATH, 1000);
+    mkdir(STORAGE_PATH, 0760, true);
 } 
 
 if (!is_writable(STORAGE_PATH)){
-    echo "Please change owner" . realpath(STORAGE_PATH) . " to user " . exec('whoami') . " . </br>";
-    echo "sudo chown -R " . exec('whoami') . ' ' . realpath(STORAGE_PATH) . "</br>";
+    echo STORAGE_PATH . " is not writable by " . exec("whoami") . "</br>";
+    echo "Please either grant user permission or add " . exec("whoami") . " to the group owner with read write permissions" \. "</br>"
 } else {
     if (isset($_POST['submit'])){
+        echo '<pre>';
+        var_dump($_FILES);
+        echo '</pre>';
+
         $filePath = STORAGE_PATH . '/' . $_FILES['file']['name'];
         if(file_exists($filePath)){
             unlink($filePath);
         }
         move_uploaded_file($_FILES['file']['tmp_name'], $filePath);
-        chmod($filePath, 0764);
+        chmod($filePath, 0744);
         echo '<pre>';
         var_dump(file($filePath));
         echo '</pre>';
