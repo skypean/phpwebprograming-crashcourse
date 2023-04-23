@@ -20,7 +20,7 @@ if (!is_dir(STORAGE_PATH)) {
 
 if (!is_writable(STORAGE_PATH)){
     echo STORAGE_PATH . " is not writable by " . exec("whoami") . "</br>";
-    echo "Please either grant user permission or add " . exec("whoami") . " to the group owner with read write permissions" \. "</br>"
+    echo "Please either grant user permission or add " . exec("whoami") . " to the group owner with read write permissions" . "</br>";
 } else {
     if (isset($_POST['submit'])){
         echo '<pre>';
